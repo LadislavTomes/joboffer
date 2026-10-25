@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<b></b>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<title>UPLOAD</title>
+<SCRIPT>
+var x = "";
+function OnLoad()
+{  if(x != "")
+   {
+     x = window.opener.document.window.location.reload();
+     window.close();
+   }  
+   x = window.opener.document.getElementById("cesta").value;
+   //alert(x);
+   document.getElementById("cesta").value = x;
+}
+</SCRIPT>
+<body onload="OnLoad()">
+<H1>UPLOAD </H1>
+<form name=f enctype="multipart/form-data" action="./form.php" method="post">
+   <fieldset style="width:300px;"> <legend>Data of item of goods</legend>
+   <p><table border="1"><tr> 
+    <td >Titulek : &nbsp;</td>
+      <td ><input type="text" name="jmeno" maxlength="32"/></td>
+    </tr><tr>       
+    <td >Technika : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td ><input type="text" name="heslo" maxlength="32"/></td>
+    </tr><tr> 
+    <td >Rozmer : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td ><input type="text" name="heslo" maxlength="32"/></td>
+    </tr><tr>           
+    <td >Cena : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td ><input type="text" name="heslo" maxlength="32"/></td>
+    </tr><tr>    
+  </table>      
+  <br><BR>
+	</p>
+     Nyní se edituje: <input type="text" name="cesta" id="cesta" value=""/>
+   </fieldset>
+  <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+  <input type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPLOAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+</form>
+</body>
+</html>

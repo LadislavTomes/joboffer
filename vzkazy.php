@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+
+<head>
+  <meta name="keywords" content="Ilona Kubíčková,Kubíčková,ilona,kubickova,obrazy,malirka,malířka,paintings,paint,olej,plátno,canvas,příroda,květiny,kytky,portrét,malování,prodej obrazů,surealismus,modernismus" />
+  <meta name="robots" content="ALL, FOLLOW" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+
+
+<title>Ilona - vzkazy </title>
+<style>
+body {SCROLLBAR-FACE-COLOR: #FFFFFF; SCROLLBAR-HIGHLIGHT-COLOR: #E1E1E1; SCROLLBAR-SHADOW-COLOR: #FFFFFF; SCROLLBAR-3DLIGHT-COLOR: #FFFFFF; SCROLLBAR-ARROW-COLOR: #E1E1E1; SCROLLBAR-TRACK-COLOR: #FFFFFF; FONT-FAMILY: Arial, Verdana; SCROLLBAR-DARKSHADOW-COLOR: #E1E1E1 }
+.style5{float:left; font-size:10pt;	color: #096a39;	font-family: Arial;}
+
+.butt { /*width:160px; height:30px;*/ font-family: Arial; color: rgb(9, 106, 57); font-size: 10px; }
+
+  </style>
+</head>
+
+<title>Ilona Kubíčková - kontakt</title>
+</head>
+
+<body>
+
+<p style="margin: 0px 30px">&nbsp;</p>
+<p style="margin: 0px 30px">&nbsp;</p>
+
+<p style="margin: 0px 30px"><a title="Zpět na titul" href="index.html">
+<img border="0" src="images/foot.jpg" width="139" height="52"></a></p>
+
+<p style="margin: 0px 30px">&nbsp;</p>
+
+<p style="margin: 0px 30px">&nbsp;</p>
+
+<?php
+require_once "AtMail_smtp.php";
+//_NET_LOC.
+ini_set (
+"include_path", (
+"../PEAR/" .
+PATH_SEPARATOR .
+ini_get ("include_path")
+)
+);
+require_once "Mail.php";
+
+
+  if (isset($_REQUEST['email']))
+  {
+    $subject = "Vzkaz :  ";           // Vzkaz Objednavka
+    $body = (trim($_POST['S1'])); // echo "<SCRIPT>alert(\"T1$from\");</SCRIPT>";
+    $from = trim($_POST['T1']);   // "pbucek@AtNet.sk"; 
+ 
+    if($from=="")
+    { echo "<SCRIPT>alert(\"E-Mail musí být správně vyplněn!\");</SCRIPT>";
+      return;
+    }  
+    if (!eregi('^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.([a-zA-Z]{2,4})$',$from)) {  //else if (empty($_POST['last_name']))
+      echo "<script>alert(\"Nekorektní email !!! \\n Musí být zadán ve tvaru username @ domain . extension\")</script>"; //DBG  RE regex("%s, w+@w+ \.w+"))
+      echo "<script>history.back();</script>";
+      return; 
+    }
+    
+    AtMail_smtp($to, $from, "Od : ".$from."\n\r".$body, $subject.$from);
+    
+    echo "<DIV class=\"style5\">Děkuji za Váš vzkaz, byl úspěšně odeslán.</DIV>";
+    
+    exit;
+  }
+?>
+
+<p style="margin: 0px 30px"><font size="2" color="#096A39">Zde můžete napsat 
+vzkaz</font></p>
+
+<p style="margin: 0px 30px">&nbsp;</p>
+
+<form id="vzkaz" method="POST" action="vzkazy.php">
+ <input type="hidden" name="email" value="bucekpetr@post.cz"/>  
+  <!--webbot bot="SaveResults" u-file="C:\Documents and Settings\OSuser\Dokumenty\wwwnew\_private\form_results.csv" s-format="TEXT/CSV" s-label-fields="TRUE" -->
+  <p style="margin: 0px 30px">
+  <font face="Arial"><font size="2" color="#096A39">Email odesílatele: </font>
+  <font color="#096A39"><input type="text" name="T1" size="20"></font></font></p>
+  <p style="margin: 0px 30px">&nbsp;</p>
+  <p style="margin: 0px 30px"><font face="Arial"><font size="2" color="#096A39">
+  Vzkaz: </font><font color="#096A39"><textarea rows="7" name="S1" cols="35"></textarea></font></font></p>
+  <p style="margin: 0px 30px">&nbsp;</p>
+  <p style="margin: 0px 30px">&nbsp;</p>
+  <p style="margin: 0px 30px">
+  <input type="submit" value="Odeslat" name="B1" style="font-family: Arial; color: #096A39; font-size: 10px">&nbsp;&nbsp;&nbsp;
+  <input type="reset" value="Smazat" name="B2" style="font-family: Arial; color: #096A39; font-size: 10px"></p>
+</form> 
+
+</body>
+
+</html>
